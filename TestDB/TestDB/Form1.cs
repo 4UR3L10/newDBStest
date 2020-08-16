@@ -24,7 +24,7 @@ namespace TestDB
             connectionVar.Open();
             SqlCommand commandVar = connectionVar.CreateCommand();
             commandVar.CommandType = CommandType.Text;
-            commandVar.CommandText = "SELECT Description FROM Product WHERE Product_Number = '10-01'";
+            commandVar.CommandText = "SELECT * FROM Customer,Product WHERE Customer.Product_Number = Product.Product_Number";
             commandVar.ExecuteNonQuery();
 
 
@@ -33,7 +33,7 @@ namespace TestDB
             dataAdapterVar.Fill(dataTableVar);
             foreach (DataRow dataRowVar in dataTableVar.Rows)
             {
-                MessageBox.Show(dataRowVar["Description"].ToString());
+                MessageBox.Show(dataRowVar["First Name"].ToString());
             }
             connectionVar.Close();
             MessageBox.Show("Record Selected Successfully");
